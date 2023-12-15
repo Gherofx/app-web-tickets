@@ -1,0 +1,93 @@
+nav,
+    .offcanvas {
+        background-color: #0174BE;
+    }
+
+
+
+    i {
+        color: white;
+    }
+
+    a {
+        align-items: center;
+    }
+
+    li {
+        background-color: transparent;
+    }
+
+        li:focus {
+            outline: 0;
+        }
+
+    .nav-item {
+        border-color: white;
+        transition: box-shadow 0.2s ease-in-out;
+    }
+
+        .nav-item:hover {
+            box-shadow: 0 0 40px white;
+        }
+
+    button:hover {
+        box-shadow: 0 0 40px white;
+    }
+
+    .navbar-toggler {
+        border: none;
+    }
+
+        .navbar-toggler:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+
+    .wrapper a {
+        cursor: pointer;
+        border-radius: 80%;
+        border: transparent;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .wrapper a:hover {
+            border: 5px solid white;
+            box-shadow: 0 0 15px white;
+            transition: all 0.2s ease-in-out;
+        }
+    <!-- -----main-- >
+    main {
+        margin-top: 104rem;
+    }
+
+    main .date {
+        display: inline-block;
+        background: var(blue);
+        border-radius: var(black);
+        margin-top: 1rem;
+        padding: 0.5rem 1.6rem;
+    }
+
+        main .date input[type="date"] {
+            background: transparent;
+            color: var(black);
+        }
+
+    main .insights {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.6rem;
+    }
+
+        main .insights > div {
+            background: var(black);
+            padding: var(black);
+            border-radius: var(black);
+            margin-top: 1rem;
+            box-shadow: var(black);
+        }
+
+            main .insights > div:hover {
+                box-shadow: none;
+            }
