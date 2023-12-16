@@ -1,23 +1,17 @@
 package pe.edu.idat.appwebtickets.model.bd;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Date;
-
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name="roles")
+@Table(name="rol")
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idrol;@Column(name="descripcion")
-
-    private String descripcion;
-    @Column(name="esactivo")
-    private Boolean esactivo;
-    @Column(name="fecharegistro")
-    private Date fecharegistro;
+    private Integer idrol;
+    @Column(name="nomrol")
+    private String nomrol;
 }

@@ -6,4 +6,6 @@ import pe.edu.idat.appwebtickets.model.bd.Rol;
 
 @Repository
 public interface RolRepository extends JpaRepository<Rol,Integer> {
+
+    Rol findByNomrol(String nomrol);
 }

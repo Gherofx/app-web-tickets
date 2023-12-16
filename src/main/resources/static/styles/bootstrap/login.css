@@ -1,0 +1,214 @@
+* {
+    font-family: 'system-ui', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    min-height: 80vh;
+}
+
+.left-column {
+    display: flex;
+    background: linear-gradient(to bottom right,#023b96 20%,#8aaef0);
+    width: 67%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 5px 0 10px -5px rgba(0, 0, 0, 0.5);
+}
+
+.right-column {
+    display: flex;
+    /*background-color:bisque;*/
+    width: 33%;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-session {
+    background-color: white;
+    width: 70%;
+    /* max-width: 400px; */
+    /* padding: 3.5em 1em; */
+    /* border-radius: 6px; */
+    /*box-shadow: 0 5px 10px -5px rgb(0 0 0 / 30%);*/
+    text-align: center;
+}
+
+.tittle {
+    font-size: 2rem;
+    margin-bottom: 1.5em;
+    color: #5e5e5e;
+}
+
+.form-container {
+    display: grid;
+    gap: 2.2em;
+}
+
+.form-group {
+    position: relative;
+    --color: #495057;
+}
+
+    .form-group a {
+        color: #15428a;
+        text-decoration: none;
+    }
+
+.rememberme {
+    color: #5e5e5e;
+}
+
+.form-input {
+    width: 80%;
+    background: none;
+    color: #706c6c;
+    font-size: 1.3rem;
+    padding: .6em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #bdbdbd;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+    .form-input:not(:placeholder-shown) {
+        color: #4d4646;
+    }
+
+        .form-input:focus + .form-label, .form-input:not(:placeholder-shown) + .form-label {
+            transform: translateY(-12px) scale(.7);
+            transform-origin: left top;
+            color: #3866f2;
+        }
+
+.form-label {
+    color: #bdbdbd;
+    ;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+}
+
+.form-submit {
+    background: #1C9842;
+    color: white;
+    font-weight: 200;
+    font-size: 1.3rem;
+    border: none;
+    padding: .5em 0;
+    border-radius: .5em;
+}
+
+    .form-submit:hover {
+        background: #168E40;
+    }
+
+.form-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #0739cf;
+    transform: scale(0);
+    transform: left bottom;
+    transition: transform .4s;
+}
+
+.form-input:focus ~ .form-line, .form-input:not(:placeholder-shown) ~ .form-line {
+    transform: scale(1);
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+}
+
+.description-text, .description-tit {
+    padding: 1em 0 0 0;
+    justify-content: left;
+}
+
+.parr {
+    font-size: 1.5em;
+}
+
+.description-tit {
+    font-size: 1.3em;
+}
+
+.logoMPE {
+    width: 201px;
+    height: 198px;
+    margin-bottom: 1.5em;
+}
+
+.alert {
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+    .alert-danger a {
+        color: #ca0d0d;
+    }
+
+
+@media (max-width:450px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-column {
+        width: 100%;
+    }
+
+    .right-column {
+        width: 100%;
+    }
+
+    .form-session {
+        background-color: white;
+        width: 80%;
+        box-shadow: 0;
+        text-align: center;
+    }
+
+    .description-text {
+        display: none;
+        padding: 0;
+    }
+
+    .description-tit h1 {
+        font-size: 1.5rem;
+        padding: 1em 0 1em 0;
+    }
+
+    .logoMPE {
+        margin-top: 2em;
+        width: 128px;
+        height: 126px;
+        margin-bottom: 1em;
+        ;
+    }
+
+    .tittle {
+        font-size: 2rem;
+        margin-bottom: 0.8em;
+    }
+}

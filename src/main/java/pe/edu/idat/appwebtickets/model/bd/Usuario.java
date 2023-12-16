@@ -1,16 +1,17 @@
 package pe.edu.idat.appwebtickets.model.bd;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.Date;
+import java.util.Set;
 
-@NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name="usuarios")
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idusuario;
@@ -18,29 +19,19 @@ public class Usuario {
     private String usuario;
     @Column(name="clave")
     private String clave;
-    @Column(name="nombre")
-    private String nombre;
+    @Column(name="correo")
+    private String correo;
+    @Column(name="nombres")
+    private String nombres;
     @Column(name="apellidos")
     private String apellidos;
     @Column(name="dni")
     private String dni;
-    @Column(name="direccion")
-    private String direccion;
-    @Column(name="correo")
-    private String correo;
-    @Column(name="telefono")
-    private String telefono;
-    @Column(name="urlfoto")
-    private String urlfoto;
-    @Column(name="nombrefoto")
-    private String nombrefoto;
     @Column(name="esactivo")
     private Boolean esactivo;
-    @Column(name="fecharegistro")
-    private Date fecharegistro;
-    @Column(name="fechamodificacion")
-    private Date fechamodificacion;
-    @ManyToOne
-    @JoinColumn(name="idrol")
-    private Rol rol;
+    @ManyToMany(cascade = CascadeType.MERGE,
+    fetch = FetchType.EAGER)
+    @JoinTable(name="usuario_rol", joinColumns = @JoinColumn(name = "idusuario"),
+    inverseJoinColumns = @JoinColumn(name = "idrol"))
+    private Set<Rol> roles;
 }
