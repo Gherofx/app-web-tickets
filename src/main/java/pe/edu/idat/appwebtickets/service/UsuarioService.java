@@ -21,18 +21,18 @@ public class UsuarioService {
             new BCryptPasswordEncoder();
 
 
-    public Usuario buscarUsuarioPorCorreo(String correo){
-        return usuarioRepository.findByCorreo(correo);
+    public Usuario buscarUsuarioPorEmail(String email){
+        return usuarioRepository.findByEmail(email);
 
     }
 
-    public Usuario buscarUsuarioPorUsuario(String usuario){
-        return usuarioRepository.findByUsuario(usuario);
+    public Usuario buscarUsuarioPorNombreUsuario(String username){
+        return usuarioRepository.findByNomusuario(username);
     }
 
     public Usuario guardarUsuario(Usuario usuario){
-        usuario.setClave(bCryptPasswordEncoder.encode(usuario.getClave()));
-        usuario.setEsactivo(true);
+        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+        usuario.setActivo(true);
         Rol usuarioRol = rolRepository.findByNomrol("ADMIN");
         usuario.setRoles(new HashSet<>(Arrays.asList(usuarioRol)));
         return usuarioRepository.save(usuario);

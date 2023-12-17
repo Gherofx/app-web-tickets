@@ -24,7 +24,11 @@ public class DetalleUsuarioService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        Usuario usuario = usuarioService.buscarUsuarioPorNombreUsuario(username);
+        return autenticacionUsuario(
+                usuario,
+                obtenerListaRolesPorUsuario(usuario.getRoles())
+        );
     }
 
     private List<GrantedAuthority> obtenerListaRolesPorUsuario(Set<Rol> listRoles){
@@ -39,9 +43,9 @@ public class DetalleUsuarioService implements UserDetailsService {
             Usuario usuario, List<GrantedAuthority> authorityList
     ){
         return new User(
-                usuario.getUsuario(),
-                usuario.getClave(),
-                usuario.getEsactivo(),
+                usuario.getNomusuario(),
+                usuario.getPassword(),
+                usuario.getActivo(),
                 true,
                 true,
                 true, authorityList

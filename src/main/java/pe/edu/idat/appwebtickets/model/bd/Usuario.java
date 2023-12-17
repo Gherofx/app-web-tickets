@@ -9,26 +9,24 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name="usuarios")
+@Table(name="usuario")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idusuario;
-    @Column(name="usuario")
-    private String usuario;
-    @Column(name="clave")
-    private String clave;
-    @Column(name="correo")
-    private String correo;
+    @Column(name="nomusuario")
+    private String nomusuario;
+    @Column(name="email")
+    private String email;
+    @Column(name="password")
+    private String password;
+    @Column(name="activo")
+    private Boolean activo;
     @Column(name="nombres")
     private String nombres;
     @Column(name="apellidos")
     private String apellidos;
-    @Column(name="dni")
-    private String dni;
-    @Column(name="esactivo")
-    private Boolean esactivo;
     @ManyToMany(cascade = CascadeType.MERGE,
     fetch = FetchType.EAGER)
     @JoinTable(name="usuario_rol", joinColumns = @JoinColumn(name = "idusuario"),

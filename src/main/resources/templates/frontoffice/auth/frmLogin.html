@@ -28,7 +28,8 @@
         <p>La Municipalidad del Punta Hermosa pone a su disposición el sistema de gestión de colas como mecanismo para dotar de mayor agilidad y eficiencia a la disposición de atención de los ciudadanos.</p>
       </div>
       <div class="description-text">
-        <p>El horario de atención es de lunes a viernes de 9 am a 4 pm.</p>
+        <p>El horario de atencióription-text">
+          n es de lunes a viernes de 9 am a 4 pm.</p>
       </div>
       <div class="description-text">
         <p>Teléfonos: (01) 654-1234</p>
@@ -37,21 +38,23 @@
 
   </div>
   <div class="right-column">
-    <form asp-controller="Inicio" asp-action="IniciarSesion" method="post" class="form-session">
+    <form th:action="@{/auth/login}"  asp-controller="Inicio" asp-action="IniciarSesion" method="post" class="form-session">
       <div class="logo">
         <img th:src="@{/imagenes/logoMuni.png}" alt="Logo Muni Punta Hermosa" class="logoMPE">
         <h2 class="tittle">Municipalidad de Punta Hermosa</h2>
       </div>
       <div class="form-container">
         <div class="form-group">
-          <input type="text" id="usuario" name="usuario" class="form-input" required placeholder=" ">
-          <label for="usuario" class="form-label">Usuario</label>
+          <label for="nomusuario" class="form-label">Usuario</label>
+          <input type="text"  class="form-input" required placeholder=" " id="nomusuario" name="nomusuario">
+
 
           <span class="form-line"></span>
         </div>
         <div class="form-group">
-          <input type="password" id="clave" name="clave" class="form-input" required placeholder=" ">
-          <label for="clave" class="form-label">Contraseña</label>
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password"  class="form-input" required placeholder=" " id="password" name="password">
+
 
           <span class="form-line"></span>
         </div>
@@ -59,13 +62,15 @@
           <input type="checkbox" id="recuerdame" name="recuerdame">
           <label for="recuerdame" class="rememberme">Recuérdame</label>
         </div>
-        <button type="submit" id="btningresar" class="form-submit" onclick="validar();">Iniciar sesión</button>
-        <button type="submit" class="form-submit" th:href="@{/auth/registrar}" onclick="validar();">Registrate</button>
+        <button type="submit" id="btningresar" class="btn btn-primary">
+          <i class="fas fa-save"></i>
+          Iniciar Sesion</button>
+        <a class="btn btn-primary" th:href="@{/auth/registrar}"
+           role="button">REGISTRARSE</a>
+      </div>
     </form>
   </div>
 </div>
-
-
 
 </body>
 </html>

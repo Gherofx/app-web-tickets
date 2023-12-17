@@ -10,34 +10,34 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import pe.edu.idat.appwebtickets.service.DetalleUsuarioService;
-
 @Configuration
 @EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConfig {
+
     private final DetalleUsuarioService detalleUsuarioService;
 
     @Bean
-    public SecurityFilterChain config(HttpSecurity httpSecurity)throws Exception{
+    public SecurityFilterChain config(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
                 .authorizeHttpRequests(
                         auth ->
                                 auth.requestMatchers("/auth/login",
-                                        "/auth/registrar",
-                                        "/auth/guardarusuario",
-                                        "/resources/**",
-                                        "/imagenes/**",
-                                        "/static/**",
-                                        "/styles/**",
-                                        "/scripts/**").permitAll()
-                                        .anyRequest()
-                                        .authenticated()
+                                                "/auth/registrar",
+                                                "/auth/guardarusuario",
+                                                "imagenes/**",
+                                                "/resources/**",
+                                                "/static/**",
+                                                "/styles/**",
+                                                "/scripts/**").permitAll()
+                                                .anyRequest()
+                                                .authenticated()
                 ).formLogin(
                         login ->
                                 login.loginPage("/auth/login")
                                         .defaultSuccessUrl("/auth/login-success")
-                                        .usernameParameter("usuario")
-                                        .passwordParameter("clave")
+                                        .usernameParameter("nomusuario")
+                                        .passwordParameter("password")
                 ).logout(
                         logout ->
                                 logout.logoutSuccessUrl("/auth/login")
@@ -46,6 +46,7 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 
+
     @Bean
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -53,4 +54,5 @@ public class SecurityConfig {
         daoAuthenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
         return daoAuthenticationProvider;
     }
+
 }

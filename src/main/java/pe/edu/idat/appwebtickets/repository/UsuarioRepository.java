@@ -6,7 +6,7 @@ import pe.edu.idat.appwebtickets.model.bd.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-    Usuario findByCorreo(String correo);
+    Usuario findByEmail(String email);
 
-    Usuario findByUsuario(String usuario);
+    Usuario findByNomusuario(String nomusuario);
 }
