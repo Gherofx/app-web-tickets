@@ -11,14 +11,13 @@ import pe.edu.idat.appwebtickets.service.AreaService;
 import java.util.List;
 
 @AllArgsConstructor
-@Controller
 @RequestMapping("/backoffice/area")
+@Controller
 public class AreaController {
     private AreaService areaService;
-
     @GetMapping("/listar")
     @ResponseBody
-    public List<Area> listarareas(){
+    public List<Area> listarAreas(){
         return areaService.listarAreas();
     }
 }

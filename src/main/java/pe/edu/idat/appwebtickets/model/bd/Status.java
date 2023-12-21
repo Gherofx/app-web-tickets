@@ -7,14 +7,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="ticket_estados")
-public class Ticket_estado {
-
+@Table(name = "status")
+public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_estado;
-    @Column(name="nombre_estado")
-    private String nombre_estado;
-    @Column(name="estado")
-    private Boolean estado;
+    private Integer idstatus;
+
+    @Column(name = "nstatus")
+    private String nstatus;
 }

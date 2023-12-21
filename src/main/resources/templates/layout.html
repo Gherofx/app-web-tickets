@@ -15,6 +15,8 @@
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link th:href="@{/styles/bootstrap/layout.css}" rel="stylesheet"/>
+    <script th:src="@{/scripts/jquery/jquery.js}"
+            type="text/javascript"></script>
 </head>
 
 <body>
@@ -50,11 +52,19 @@
                     class="offcanvas-body d-flex flex-column justify-content-between px-0"
             >
                 <ul class="navbar-nav fs-0 justify-content-evenly">
-                    <li class="nav-item p-4 py-md-1"><a href="" class="nav-link"><i class="bi bi-tv px-3 texet-info fs-3 "><b><font  color="white"  face="Arial" size="6" >Tickets</font></b></i ></a></li>
-                    <li class="nav-item p-4 py-md-1"><a href="" class="nav-link"><i class="bi bi-person-video2 px-3 texet-info fs-2"><b><font  color="white"  face="Arial" size="6">Asesor</font></b></i></a></li>
-                    <li class="nav-item p-4 py-md-1"><a href="" class="nav-link"><i class="bi bi-person-vcard px-3 texet-info fs-2"><b><font  color="white"  face="Arial" size="6">Operador</font></b></i></a></li>
-                    <li class="nav-item p-4 py-md-1"><a href="" class="nav-link"><i class="bi bi-person-video3 px-3 texet-info fs-2"><b><font  color="white" face="Arial" size="6">Administrador</font></b></i></a></li>
-                    <li class="nav-item p-4 py-md-1"><a th:href="@{/auth/login}" class="nav-link"><i class="bi bi-box-arrow-right px-3 texet-info fs-2"><b><font  color="white" face="Arial" size="6">Salir</font></b></i></a></li>
+
+                    <li class="nav-item p-4 py-md-1"><a th:href="@{/backoffice/ticket}" class="nav-link"><i class="bi bi-tv px-3 fs-3 "><b>&nbsp;Tickets</b></i ></a></li>
+                    <li class="nav-item p-4 py-md-1"><a href="" class="nav-link"><i class="bi bi-person-video2 px-3 fs-2">&nbsp;Asesor</b></i></a></li>
+                    <li class="nav-item p-4 py-md-1"><a th:href="@{/backoffice/ciudadano}" class="nav-link"><i class="bi bi-person-vcard px-3 fs-2"><b>&nbsp;Ciudadano</b></i></a></li>
+                    <li class="nav-item p-4 py-md-1"><a href="" class="nav-link"><i class="bi bi-person-video3 px-3 fs-2"><b>&nbsp;Administrador</b></i></a></li>
+                    <li class="nav-item p-4 py-md-1">
+                        <form th:action="@{/logout}" method="post" >
+                            <a href="#" class="nav-link" onclick="this.closest('form').submit()">
+                                <i class="bi bi-box-arrow-right px-3 t fs-2" ><b>&nbsp;Salir</b></i>
+                            </a>
+                        </form>
+                    </li>
+
                     <br>
                     <div class="wrapper">
                         <center>

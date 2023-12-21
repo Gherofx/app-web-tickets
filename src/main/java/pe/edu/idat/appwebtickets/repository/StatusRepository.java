@@ -2,8 +2,8 @@ package pe.edu.idat.appwebtickets.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pe.edu.idat.appwebtickets.model.bd.Area_servicio;
+import pe.edu.idat.appwebtickets.model.bd.Status;
 
 @Repository
-public interface Area_servicioRepository extends JpaRepository<Area_servicio,Integer> {
+public interface StatusRepository extends JpaRepository<Status,Integer> {
 }

@@ -1,10 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout::head}">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<script th:src="@{/scripts/web/backoffice/ticket/frmMantTicket.js}"
+        type="text/javascript"></script>
+<nav th:replace="~{layout::menu}"></nav>
+<div class="card ">
+    <div class="card-header text-bg-dark mb-3">
+        Mantenimiento de Tickets
+    </div>
+    <div class="card-body">
+        <button id="btnagregar"
+                type="button" class="btn btn-primary"><i class="fas fa-plus"></i> Agregar</button>
+        <hr />
+        <div id="mensaje"></div>
+        <table id="tblticket" class="table">
+            <thead>
+            <tr>
+                <th scope="col">N° Ticket</th>
+                <th scope="col">Dni</th>
+                <th scope="col">Ciudadano</th>
+                <th scope="col"> </th>
+                <th scope="col">Area/Modulo</th>
+                <th scope="col">Observacion</th>
+                <th scope="col">Preferencial</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Actualizar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="boleto :${listatickets}">
+                <td th:text="${boleto.idticket}"></td>
+                <td th:text="${boleto.ciudadano.dniciu}"></td>
+                <td th:text="${boleto.ciudadano.nombresc}"></td>
+                <td th:text="${boleto.ciudadano.apellidosc}"></td>
+                <td th:text="${boleto.area.narea}"></td>
+                <td th:text="${boleto.observacion}"></td>
+                <td th:text="${boleto.preferencial}"></td>
+                <td th:text="${boleto.status.nstatus}"></td>
+                <td>
+                    <button type="button" class="btn btn-info btnactualizar"
+                            th:data-boletoid="${boleto.idticket}"
+                            th:data-boletodni="${boleto.ciudadano.idciu}"
+                            th:data-boletonom="${boleto.ciudadano.nombresc}"
+                            th:data-boletoape="${boleto.ciudadano.apellidosc}"
+                            th:data-boletoarea="${boleto.area.idarea}"
+                            th:data-boletoobs="${boleto.observacion}"
+                            th:data-boletopref="${boleto.preferencial}"
+                            th:data-boletoest="${boleto.status.idstatus}"
+                            th:data-boletotiempo="${boleto.fregistro}"><i class="fas fa-edit"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal Registrar / Actualizar Producto -->
+<div class="modal fade" id="modalNuevo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Ticket</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="cbodni" class="form-label">DNI</label>
+                    <select id="cbodni" class="form-control"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="cboarea" class="form-label">Area</label>
+                    <select id="cboarea" class="form-control"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="txtobservacion" class="form-label">Observacion</label>
+                    <input type="text" class="form-control" id="txtobservacion">
+                </div>
+                <div class="mb-3">
+                    <label for="txttiempo" class="form-label">Fecha y Hora de Registro</label>
+                    <input type="text" class="form-control" id="txttiempo" readonly>
+                </div>
+                <div class="form-check form-switch" id="switchpreferencial">
+                    <input class="form-check-input" type="checkbox" role="switch" id="chkpreferencial">
+                    <label class="form-check-label" for="chkpreferencial">Preferencial</label>
+                </div>
+                <div class="mb-3">
+                    <label for="cbostatus" class="form-label">Estado</label>
+                    <select id="cbostatus" class="form-control"></select>
+                </div>
+                <input type="hidden" id="hddboletoid" value="0">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancelar</button>
+                <button type="button" id="btnguardar" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

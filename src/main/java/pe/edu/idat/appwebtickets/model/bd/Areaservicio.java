@@ -7,17 +7,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="area_servicios")
-public class Area_servicio {
-
+@Table(name = "areaservicio")
+public class Areaservicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_area_servicio;
-    @ManyToOne
-    @JoinColumn(name="id_area")
-    private Area area;
-    @ManyToOne
-    @JoinColumn(name="id_servicio")
-    private Servicio servicio;
+    private Integer idas;
 
+    @ManyToOne
+    @JoinColumn(name = "idarea")
+    private Area area;
+
+    @ManyToOne
+    @JoinColumn(name = "idservicio")
+    private Servicio servicio;
 }

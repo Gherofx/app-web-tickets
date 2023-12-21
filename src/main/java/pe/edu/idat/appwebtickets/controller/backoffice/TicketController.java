@@ -15,19 +15,15 @@ import java.util.List;
 @Controller
 @RequestMapping("/backoffice/ticket")
 public class TicketController {
-
     private TicketService ticketService;
-
     @GetMapping("")
-    public String frmMantTicket(Model model){
-        model.addAttribute("listartickets",
-                ticketService.listarTickets());
-        return"backoffice/ticket/frmticket";
+    public  String frmMantTicket(Model model){
+        model.addAttribute("listatickets", ticketService.listarTickets());
+        return  "backoffice/ticket/frmticket";
     }
-
     @GetMapping("/listar")
     @ResponseBody
-    public List<Ticket> listartickets(){
+    public List<Ticket> listarTickets(){
         return ticketService.listarTickets();
     }
 
@@ -36,5 +32,4 @@ public class TicketController {
     public ResultadoResponse guardarTicket(@RequestBody TicketRequest ticketRequest){
         return ticketService.guardarTicket(ticketRequest);
     }
-
 }

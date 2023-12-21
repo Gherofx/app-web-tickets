@@ -2,58 +2,54 @@ package pe.edu.idat.appwebtickets.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import pe.edu.idat.appwebtickets.model.bd.*;
+import pe.edu.idat.appwebtickets.model.bd.Area;
+import pe.edu.idat.appwebtickets.model.bd.Ciudadano;
+import pe.edu.idat.appwebtickets.model.bd.Status;
+import pe.edu.idat.appwebtickets.model.bd.Ticket;
 import pe.edu.idat.appwebtickets.model.request.TicketRequest;
 import pe.edu.idat.appwebtickets.model.response.ResultadoResponse;
 import pe.edu.idat.appwebtickets.repository.TicketRepository;
 
 import java.util.List;
 
-@Service
 @AllArgsConstructor
+@Service
 public class TicketService {
-
     private TicketRepository ticketRepository;
 
-    public List<Ticket> listarTickets(){
-        return ticketRepository.findAll();
-    }
+    public List<Ticket> listarTickets(){return ticketRepository.findAll();}
 
-
-    public ResultadoResponse guardarTicket(TicketRequest ticketRequest){
-        String mensaje ="Ticket resgistrado correctamente";
+    public ResultadoResponse guardarTicket(TicketRequest ticketRequest) {
+        String mensaje = "Operación exitosa";
         Boolean respuesta = true;
         try{
-            Ticket ticket= new Ticket();
-            if(ticketRequest.getId_ticket()>0){
-                ticket.setId_ticket(ticketRequest.getId_ticket());
+            Ticket ticket = new Ticket();
+            if (ticketRequest.getIdticket()>0){
+                ticket.setIdticket(ticketRequest.getIdticket());
             }
             ticket.setPreferencial(ticketRequest.getPreferencial());
-            ticket.setCon_pago(ticketRequest.getCon_pago());
-            Boolean con_pago =false;
-            if(ticketRequest.getCon_pago() !=null){
-                con_pago = true;
-            }
-            ticket.setCon_pago(con_pago);
-            ticket.setFecha_creacion(ticketRequest.getFecha_creacion());
+            ticket.setObservacion(ticketRequest.getObservacion());
+            ticket.setFregistro(ticketRequest.getFregistro());
+
+            Status status = new Status();
+            status.setIdstatus(ticketRequest.getIdstatus());
+
             Ciudadano ciudadano = new Ciudadano();
-            ciudadano.setId_ciudadano(ticketRequest.getId_ciudadano());
+            ciudadano.setIdciu(ticketRequest.getIdciu());
+
             Area area = new Area();
-            area.setId_area(ticketRequest.getId_area());
-            Ticket_estado ticket_estado = new Ticket_estado();
-            ticket_estado.setId_estado(ticketRequest.getId_estado());
-            Usuario usuario = new Usuario();
-            usuario.setIdusuario(ticketRequest.getIdusuario());
+            area.setIdarea(ticketRequest.getIdarea());
+
+            ticket.setStatus(status);
             ticket.setCiudadano(ciudadano);
             ticket.setArea(area);
-            ticket.setTicket_estado(ticket_estado);
-            ticket.setUsuario(usuario);
-            ticketRepository.save(ticket);
-        }catch (Exception ex){
-            mensaje = "Ticket no registrado";
-            respuesta = false;
 
+            ticketRepository.save(ticket);
+        }catch (Exception ex) {
+            mensaje = "Error en la operación";
+            respuesta = false;
         }
+
         return ResultadoResponse.builder().mensaje(mensaje).respuesta(respuesta).build();
     }
 }

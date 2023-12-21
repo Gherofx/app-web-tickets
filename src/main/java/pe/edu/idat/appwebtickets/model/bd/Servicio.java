@@ -7,14 +7,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="servicios")
+@Table(name = "servicio")
 public class Servicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_servicio;
-    @Column(name="nombre_servicio")
-    private String nombre_servicio;
-    @Column(name="esactivo")
-    private Boolean esactivo;
+    private Integer idservicio;
 
+    @Column(name = "nservicio")
+    private String nservicio;
+
+    @Column(name = "estado")
+    private Boolean estado;
 }
